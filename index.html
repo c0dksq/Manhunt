@@ -620,7 +620,7 @@ function renderTeams() {
   g.innerHTML=(S.teams || []).map(t=>`
     <div class="tcard ${t.tagged?'tagged':''}" onclick="selTeam(${t.id})">
       <div class="tcard-name">${t.name}</div>
-      <div class="tcard-pts">${t.pts} PTS · ${tasksDone(t)} tasks</div>
+      <div class="tcard-pts">${isBlackout() ? '?? PTS' : t.pts+' PTS'} · ${tasksDone(t)} tasks</div>
     </div>`).join('');
 }
 
@@ -659,7 +659,7 @@ function renderPV() {
   const bar=document.getElementById('pv-sbar');
   const dot=document.getElementById('pv-sdot');
   const txt=document.getElementById('pv-stxt');
-  document.getElementById('pv-pts').textContent=team.pts+' PTS';
+  document.getElementById('pv-pts').textContent = isBlackout() ? '?? PTS' : team.pts+' PTS';
 
   if(team.tagged){
     bar.className='sbar tagged'; dot.className='sdot2 tagged';
@@ -680,7 +680,7 @@ function renderPV() {
     if (cnt > 0) {
       if (task.rep) {
         let completions = Math.floor(cnt/req);
-        chipHtml = `<div class="count-chip">COMPLETED ${completions}× (${cnt} PROOFS) — ${completions*task.pts} PTS</div>`;
+        chipHtml = `<div class="count-chip">COMPLETED ${completions}× (${cnt} PROOFS) — ${isBlackout() ? '??' : completions*task.pts} PTS</div>`;
       } else {
         if (cnt >= req) chipHtml = `<div class="done-chip">✓ DONE</div>`;
         else chipHtml = `<div class="count-chip">⏳ ${cnt}/${req} PROOFS UPLOADED</div>`;
