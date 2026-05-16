@@ -369,7 +369,7 @@ body{background:var(--black);color:var(--white);font-family:var(--fm);min-height
       <div class="addform">
         <div class="frow">
           <input class="finput" id="tn" placeholder="Task name..." maxlength="40" style="margin-bottom:0">
-          <input class="finput finput-sm" id="tp" type="number" placeholder="PTS" min="1" max="999" value="10" style="margin-bottom:0">
+          <input class="finput finput-sm" id="tp" type="number" placeholder="PTS" min="0.5" max="999" value="10" step="0.5" style="margin-bottom:0">
           <input class="finput finput-sm" id="treq" type="number" placeholder="REQ" min="1" max="10" value="1" title="Proofs Required" style="margin-bottom:0">
         </div>
         <input class="finput mt8" id="td" placeholder="Proof required..." maxlength="80">
@@ -773,8 +773,8 @@ function doSubmit(teamId, taskId, task, fileUrl, fileType, fileName) {
   team.taskCounts[taskId]=(team.taskCounts[taskId]||0)+1;
   const cnt = team.taskCounts[taskId];
 
-  let pointsToAward = (cnt % req === 0) ? task.pts : 0;
-  team.pts += pointsToAward;
+let pointsToAward = (cnt % req === 0) ? task.pts : 0;
+team.pts = Math.round((team.pts + pointsToAward) * 10) / 10;
 
   S.subs.push({
     id:S.nextSubId++,
@@ -1062,7 +1062,7 @@ function renderTaskMgmt() {
 
 function addTask() {
   const name=document.getElementById('tn').value.trim();
-  const pts=parseInt(document.getElementById('tp').value);
+  const pts=parseFloat(document.getElementById('tp').value);
   const req=parseInt(document.getElementById('treq').value) || 1;
   const desc=document.getElementById('td').value.trim();
   const rep=document.getElementById('rep-tog').classList.contains('on');
