@@ -299,6 +299,7 @@ body{background:var(--black);color:var(--white);font-family:var(--fm);min-height
       <button class="tab" onclick="tab('teams')">TEAMS</button>
       <button class="tab" onclick="tab('tasks')">TASKS</button>
       <button class="tab" onclick="tab('rules')">RULES</button>
+      <button class="tab" onclick="tab('points')">POINTS</button>
     </div>
 
     <div class="apanel on" id="ap-game">
@@ -392,11 +393,16 @@ body{background:var(--black);color:var(--white);font-family:var(--fm);min-height
       </div>
       <div class="lbl">CURRENT RULES</div>
       <div id="rules-mgmt"></div>
+    <div class="apanel" id="ap-points">
+        <div class="lbl">MANUALLY ADJUST POINTS</div>
+        <div class="muted" style="margin-bottom:16px">Add or subtract points from any team. This is logged in the history.</div>
+        <div id="points-mgmt"></div>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="rev-ov" id="rev-ov">
+<div class="rev-ov"
   <div class="rev-lbl">REVEALING IN</div>
   <div class="rev-num" id="rev-num">3</div>
   <div class="rev-lbl" id="rev-sub">GET READY</div>
@@ -861,6 +867,7 @@ function tab(t) {
 
 function renderAdmin() {
   renderTagCtrl();
+  renderPointsMgmt();
   renderSubs();
   renderTeamMgmt();
   renderTaskMgmt();
@@ -1018,6 +1025,57 @@ function rejectSub(id) {
   
   notify(`Deleted — Reversed +${s.ptsAwarded||0} pts`);
   push(); renderAdmin();
+}
+
+function renderPointsMgmt() {
+  const el = document.getElementById('points-mgmt');
+  if(!el) return;
+  el.innerHTML = (S.teams || []).map(t => `
+    <div class="sub-card">
+      <div class="sub-hd">
+        <div class="sub-team">${t.name}</div>
+        ${t.tagged ? '<span class="tagged-pill">TAGGED</span>' : ''}
+        <div class="sbar-pts">${t.pts} PTS</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap;">
+        <input 
+          class="rinput" 
+          style="width:80px;text-align:center;" 
+          type="number" 
+          id="pt-val-${t.id}" 
+          placeholder="PTS" 
+          min="0"
+          value="10">
+        <input
+          class="rinput"
+          style="flex:1;min-width:120px;"
+          type="text"
+          id="pt-reason-${t.id}"
+          placeholder="Reason (optional)...">
+        <button class="btn btn-g btn-sm" onclick="adjustPts(${t.id}, 'add')">+ ADD</button>
+        <button class="btn btn-d btn-sm" onclick="adjustPts(${t.id}, 'sub')">− TAKE</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function adjustPts(id, action) {
+  const val = parseFloat(document.getElementById('pt-val-'+id).value);
+  const reason = document.getElementById('pt-reason-'+id).value.trim() || 'Manual adjustment';
+  if(!val || val <= 0) { notify('Enter a points value'); return; }
+  const team = S.teams[id];
+  if(action === 'add') {
+    team.pts = Math.round((team.pts + val) * 10) / 10;
+    addLog(`MANUAL: +${val} pts to ${team.name} — ${reason}`);
+    notify(`+${val} pts added to ${team.name}`);
+  } else {
+    team.pts = Math.round(Math.max(0, team.pts - val) * 10) / 10;
+    addLog(`MANUAL: -${val} pts from ${team.name} — ${reason}`);
+    notify(`-${val} pts taken from ${team.name}`);
+  }
+  push();
+  renderPointsMgmt();
+  renderHistory();
 }
 
 function renderTeamMgmt() {
