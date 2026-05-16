@@ -325,6 +325,10 @@ body{background:var(--black);color:var(--white);font-family:var(--fm);min-height
         <input type="number" class="tsel" id="tag-pen" value="0" min="0" onchange="saveSet()">
       </div>
       <div class="set-row">
+        <div><div class="set-lbl">INSTANT TAG DEDUCTION</div><div class="set-sub">Pts lost the moment a team is tagged</div></div>
+        <input type="number" class="tsel" id="tag-instant" value="0" min="0" onchange="saveSet()">
+</div>
+      <div class="set-row">
         <div><div class="set-lbl">LEAST TAGGED BONUS</div><div class="set-sub">Added automatically at reveal</div></div>
         <input type="number" class="tsel" id="lt-bonus" value="50" min="0" onchange="saveSet()">
       </div>
@@ -879,6 +883,7 @@ function renderAdmin() {
   document.getElementById('end-time').value=S.settings.endTime;
   document.getElementById('bo-hrs').value=S.settings.boHrs;
   document.getElementById('tag-pen').value=S.settings.tagPenalty || 0;
+  document.getElementById('tag-instant').value=S.settings.instantTagDeduction || 0;
   document.getElementById('lt-bonus').value=S.settings.leastTaggedBonus || 0;
   
   const tog=document.getElementById('game-tog');
@@ -909,10 +914,10 @@ function toggleTag(id) {
  S.teams[id].tagged=true;
 S.teams[id].taggedAt=Date.now();
 S.teams[id].tagPenalties=0;
-const instantPenalty = S.settings.tagPenalty || 0;
-if(instantPenalty > 0) {
-  S.teams[id].pts = Math.max(0, S.teams[id].pts - instantPenalty);
-  addLog(`PENALTY: ${S.teams[id].name} lost ${instantPenalty} pts on tag`);
+const instantDeduction = S.settings.instantTagDeduction || 0;
+if(instantDeduction > 0) {
+  S.teams[id].pts = Math.max(0, S.teams[id].pts - instantDeduction);
+  addLog(`PENALTY: ${S.teams[id].name} lost ${instantDeduction} pts instantly on tag`);
 }
   
   addLog(`TAG: ${S.teams[id].name} IS NOW TAGGED.`);
@@ -940,6 +945,7 @@ function saveSet() {
   S.settings.endTime=document.getElementById('end-time').value;
   S.settings.boHrs=parseInt(document.getElementById('bo-hrs').value);
   S.settings.tagPenalty=parseInt(document.getElementById('tag-pen').value) || 0;
+  S.settings.instantTagDeduction=parseInt(document.getElementById('tag-instant').value) || 0;
   S.settings.leastTaggedBonus=parseInt(document.getElementById('lt-bonus').value) || 0;
   push(); notify('Settings saved');
 }
