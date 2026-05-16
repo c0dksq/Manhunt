@@ -615,7 +615,7 @@ function startTimer() {
           let intervals = Math.floor((Date.now() - team.taggedAt) / (30 * 60000));
           if (intervals > (team.tagPenalties || 0)) {
             let diff = intervals - (team.tagPenalties || 0);
-            team.pts = Math.max(0, team.pts - (diff * S.settings.tagPenalty));
+            team.pts = team.pts - (diff * S.settings.tagPenalty);
             team.tagPenalties = intervals;
             penaltyApplied = true;
             addLog(`PENALTY: ${team.name} lost ${diff * S.settings.tagPenalty} pts (30m Tagged)`);
@@ -917,7 +917,7 @@ S.teams[id].taggedAt=Date.now();
 S.teams[id].tagPenalties=0;
 const instantDeduction = S.settings.instantTagDeduction || 0;
 if(instantDeduction > 0) {
-  S.teams[id].pts = Math.max(0, S.teams[id].pts - instantDeduction);
+  S.teams[id].pts = S.teams[id].pts - instantDeduction;
   addLog(`PENALTY: ${S.teams[id].name} lost ${instantDeduction} pts instantly on tag`);
 }
   
@@ -1083,7 +1083,7 @@ function adjustPts(id, action) {
     addLog(`MANUAL: +${val} pts to ${team.name} — ${reason}`);
     notify(`+${val} pts added to ${team.name}`);
   } else {
-    team.pts = Math.round(Math.max(0, team.pts - val) * 10) / 10;
+    team.pts = Math.round((team.pts - val) * 10) / 10;
     addLog(`MANUAL: -${val} pts from ${team.name} — ${reason}`);
     notify(`-${val} pts taken from ${team.name}`);
   }
