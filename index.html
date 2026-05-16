@@ -484,7 +484,7 @@ async function pull() {
 async function push() {
   if(pushing) return;
   const now = Date.now();
-  if(now - lastPush < 1500) return;
+  if(now - lastPush < 800) return;
   pushing = true; lastPush = now;
   setSS('spin','SAVING...');
   try {
@@ -499,6 +499,7 @@ async function push() {
 }
 
 async function softPull() {
+  if(pushing) return;
   try {
     const r = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`,
       {headers:{'X-Master-Key':API_KEY}});
@@ -539,7 +540,7 @@ async function init() {
   document.getElementById('loader').classList.add('hide');
   setTimeout(()=>{const l=document.getElementById('loader');if(l)l.remove();},500);
   startTimer();
-  syncInt = setInterval(softPull, SYNC_MS);
+  syncInt = setInterval(() => { if(!pushing && !document.activeElement.matches('input, textarea, select')) softPull(); }, SYNC_MS);
   populateFilters();
 }
 
