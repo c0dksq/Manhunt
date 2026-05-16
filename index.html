@@ -906,9 +906,14 @@ function toggleTag(id) {
       addLog(`STATUS: ${t.name} is no longer Tagged.`);
     }
   });
-  S.teams[id].tagged=true;
-  S.teams[id].taggedAt=Date.now();
-  S.teams[id].tagPenalties=0;
+ S.teams[id].tagged=true;
+S.teams[id].taggedAt=Date.now();
+S.teams[id].tagPenalties=0;
+const instantPenalty = S.settings.tagPenalty || 0;
+if(instantPenalty > 0) {
+  S.teams[id].pts = Math.max(0, S.teams[id].pts - instantPenalty);
+  addLog(`PENALTY: ${S.teams[id].name} lost ${instantPenalty} pts on tag`);
+}
   
   addLog(`TAG: ${S.teams[id].name} IS NOW TAGGED.`);
   notify(`${S.teams[id].name} is now tagged`);
