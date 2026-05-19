@@ -284,8 +284,9 @@ const API_KEY = '$2a$10$byrXnNFvzQ6icfT76FJGiuioXZkZ8CcFu1ZED6aHi.g5aN4QLrNpq';
 const PIN = '9078'; // CAN BE ANY LENGTH NOW
 const SYNC_MS = 7000;
 
-const CLOUD_NAME = 'dsdyugist';
-const UPLOAD_PRESET = 'manhunt';
+const SUPABASE_URL = 'https://yourproject.supabase.co';
+const SUPABASE_KEY = 'your-anon-key-here';
+const SUPABASE_BUCKET = 'proofs';
 
 function defState() {
   return {
@@ -611,24 +612,25 @@ async function submitTask(teamId, taskId, input) {
   if(prog) prog.classList.add('show');
   if(lbl) lbl.style.opacity='0.4';
 
-  const formData = new FormData();
-  formData.append('file', file);
-  formData.append('upload_preset', UPLOAD_PRESET);
+  const fileExt = file.name.split('.').pop();
+const fileName = `team${teamId}_task${taskId}_${Date.now()}.${fileExt}`;
 
-  const resourceType = file.type.startsWith('video') ? 'video' : 'image';
+try {
+  const res = await fetch(`${SUPABASE_URL}/storage/v1/object/${SUPABASE_BUCKET}/${fileName}`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${SUPABASE_KEY}`,
+      'Content-Type': file.type,
+    },
+    body: file
+  });
 
-  try {
-    const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/${resourceType}/upload`, {
-      method: 'POST',
-      body: formData
-    });
-    const data = await res.json();
-    
-    if(data.secure_url) {
-        doSubmit(teamId, taskId, task, data.secure_url, file.type, file.name);
-    } else {
-        throw new Error('Cloudinary error');
-    }
+  if(res.ok) {
+    const publicUrl = `${SUPABASE_URL}/storage/v1/object/public/${SUPABASE_BUCKET}/${fileName}`;
+    doSubmit(teamId, taskId, task, publicUrl, file.type, file.name);
+  } else {
+    throw new Error('Supabase upload error');
+  }
   } catch(e) {
     console.error(e);
     notify('Upload failed — check preset');
