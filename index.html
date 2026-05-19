@@ -16,8 +16,6 @@
 body{background:var(--black);color:var(--white);font-family:var(--fm);min-height:100vh;overflow-x:hidden;}
 .screen{display:none;min-height:100vh;flex-direction:column;position:relative;z-index:1;}
 .screen.active{display:flex;}
-
-/* HOME */
 #home{align-items:center;justify-content:center;padding:40px 20px;text-align:center;}
 .logo{font-family:var(--fh);font-size:clamp(80px,18vw,150px);line-height:0.82;letter-spacing:3px;margin-bottom:6px;}
 .logo-year{font-family:var(--fh);font-size:clamp(36px,8vw,64px);color:var(--yellow);letter-spacing:8px;margin-bottom:44px;}
@@ -29,8 +27,6 @@ body{background:var(--black);color:var(--white);font-family:var(--fm);min-height
 .sdot.spin{background:var(--yellow);animation:blink 0.8s infinite;}
 @keyframes blink{0%,100%{opacity:.3}50%{opacity:1}}
 .iow-tag{margin-top:14px;font-size:9px;letter-spacing:3px;color:var(--muted);}
-
-/* BUTTONS */
 .btn{display:block;width:100%;padding:15px 20px;font-family:var(--fm);font-size:12px;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;transition:all .15s;text-align:center;}
 .btn-p{background:var(--yellow);color:var(--black);font-weight:500;}
 .btn-p:hover{background:#f0dc5a;}
@@ -40,23 +36,15 @@ body{background:var(--black);color:var(--white);font-family:var(--fm);min-height
 .btn-g{background:var(--green);color:var(--white);}
 .btn-sm{padding:7px 12px;font-size:10px;width:auto;display:inline-block;}
 .btn:disabled{opacity:.35;cursor:not-allowed;}
-
-/* TOPBAR */
 .tb{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--grey2);background:var(--black);position:sticky;top:0;z-index:50;}
 .tb-title{font-family:var(--fh);font-size:22px;letter-spacing:2px;color:var(--yellow);}
 .tb-back{font-size:10px;letter-spacing:1px;color:var(--muted);cursor:pointer;background:none;border:none;font-family:var(--fm);}
 .tb-back:hover{color:var(--white);}
 .tb-timer{font-family:var(--fh);font-size:13px;letter-spacing:2px;color:var(--muted);}
 .tb-timer.urg{color:var(--red);}
-
-/* INNER PAD */
 .inner{padding:16px;flex:1;}
-
-/* LABELS */
 .lbl{font-size:9px;letter-spacing:3px;color:var(--muted);margin-bottom:12px;margin-top:20px;}
 .lbl:first-child{margin-top:0;}
-
-/* TEAM GRID */
 .tgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;}
 .tcard{background:var(--grey);border:1px solid var(--grey2);padding:14px;cursor:pointer;transition:border-color .15s;position:relative;}
 .tcard:hover{border-color:var(--yellow);}
@@ -64,8 +52,6 @@ body{background:var(--black);color:var(--white);font-family:var(--fm);min-height
 .tcard.tagged::after{content:'TAGGED';position:absolute;top:7px;right:8px;font-size:8px;letter-spacing:1px;color:var(--red);}
 .tcard-name{font-family:var(--fh);font-size:19px;letter-spacing:1px;margin-bottom:3px;}
 .tcard-pts{font-size:10px;color:var(--muted);}
-
-/* STATUS BAR */
 .sbar{display:flex;align-items:center;gap:10px;padding:12px 14px;margin-bottom:16px;}
 .sbar.free{background:rgba(74,154,74,.12);border:1px solid rgba(74,154,74,.35);}
 .sbar.tagged{background:rgba(214,48,48,.12);border:1px solid rgba(214,48,48,.35);}
@@ -74,8 +60,6 @@ body{background:var(--black);color:var(--white);font-family:var(--fm);min-height
 .sdot2.tagged{background:var(--red);}
 .sbar-txt{font-size:11px;letter-spacing:1px;flex:1;}
 .sbar-pts{font-family:var(--fh);font-size:22px;color:var(--yellow);}
-
-/* TASK CARDS */
 .task-card{background:var(--grey);border:1px solid var(--grey2);padding:14px;margin-bottom:8px;}
 .task-top{display:flex;gap:10px;align-items:flex-start;}
 .task-badge{background:var(--yellow);color:var(--black);font-size:11px;font-weight:500;padding:2px 7px;flex-shrink:0;margin-top:1px;white-space:nowrap;}
@@ -87,8 +71,6 @@ body{background:var(--black);color:var(--white);font-family:var(--fm);min-height
 .task-done-row{display:flex;align-items:center;gap:8px;margin-top:8px;flex-wrap:wrap;}
 .done-chip{font-size:9px;letter-spacing:1px;color:var(--green);border:1px solid rgba(74,154,74,.4);padding:2px 8px;}
 .count-chip{font-size:9px;letter-spacing:1px;color:var(--yellow);border:1px solid rgba(232,212,77,.4);padding:2px 8px;}
-
-/* UPLOAD */
 .upload-wrap{margin-top:10px;}
 .upload-btn{display:flex;align-items:center;justify-content:center;gap:8px;border:1px dashed var(--grey3);padding:12px;cursor:pointer;transition:border-color .15s;font-size:11px;letter-spacing:1px;color:var(--muted);}
 .upload-btn:hover{border-color:var(--yellow);color:var(--white);}
@@ -97,8 +79,6 @@ body{background:var(--black);color:var(--white);font-family:var(--fm);min-height
 .upload-progress::after{content:'';position:absolute;inset:0;background:var(--yellow);animation:prog 1.2s ease-in-out infinite;}
 @keyframes prog{0%{transform:translateX(-100%)}100%{transform:translateX(100%)};}
 .upload-progress.show{display:block;}
-
-/* LEADERBOARD & RULES */
 .lb-head{text-align:center;padding:20px 0 24px;}
 .lb-title{font-family:var(--fh);font-size:44px;letter-spacing:3px;}
 .lb-sub{font-size:9px;letter-spacing:3px;color:var(--muted);margin-top:3px;}
@@ -119,75 +99,20 @@ body{background:var(--black);color:var(--white);font-family:var(--fm);min-height
 .lb-score{font-family:var(--fh);font-size:30px;}
 .lb-row.p1 .lb-score{color:var(--yellow);}
 .tagged-pill{font-size:8px;letter-spacing:1px;color:var(--red);border:1px solid var(--red);padding:2px 5px;}
-
-.rule-card{background:var(--grey);border:1px solid var(--grey2);padding:14px;margin-bottom:8px;font-size:12px;line-height:1.5;display:flex;justify-content:space-between;align-items:center;}
-
-/* ADMIN */
-.tabs{display:flex;border-bottom:1px solid var(--grey2);margin-bottom:20px;overflow-x:auto;}
-.tab{padding:10px 14px;font-size:10px;letter-spacing:1px;cursor:pointer;color:var(--muted);background:none;border:none;font-family:var(--fm);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:all .15s;}
-.tab.on{color:var(--yellow);border-bottom-color:var(--yellow);}
-.apanel{display:none;}
-.apanel.on{display:block;}
-.set-row{display:flex;align-items:center;justify-content:space-between;padding:13px 14px;background:var(--grey);border:1px solid var(--grey2);margin-bottom:8px;gap:10px;}
-.set-lbl{font-size:11px;}
-.set-sub{font-size:9px;color:var(--muted);margin-top:2px;}
-.tog{width:42px;height:22px;background:var(--grey3);border-radius:11px;position:relative;cursor:pointer;border:none;flex-shrink:0;transition:background .2s;}
-.tog.on{background:var(--yellow);}
-.tog::after{content:'';position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:var(--black);transition:left .2s;}
-.tog.on::after{left:23px;}
-.tsel{background:var(--grey2);border:1px solid var(--grey3);color:var(--white);font-family:var(--fm);font-size:12px;padding:6px 10px;cursor:pointer;width:80px;text-align:center;}
-
-/* HISTORY LOG STYLE */
-.history-log{background:var(--black);border:1px solid var(--grey3);height:140px;overflow-y:auto;padding:10px;font-size:9px;color:var(--muted);font-family:var(--fm);}
-.history-entry{margin-bottom:4px;border-bottom:1px solid var(--grey2);padding-bottom:2px;}
-.history-time{color:var(--yellow);margin-right:8px;}
-
-.sub-card{background:var(--grey);border:1px solid var(--grey2);padding:13px;margin-bottom:8px;}
-.sub-hd{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;}
-.sub-team{font-family:var(--fh);font-size:15px;letter-spacing:1px;}
-.sub-task{font-size:10px;color:var(--muted);flex:1;}
-.sub-pts{background:var(--yellow);color:var(--black);font-size:9px;padding:2px 6px;font-weight:500;}
-.sub-time{font-size:9px;color:var(--muted);}
-.sub-count{font-size:9px;color:var(--yellow);letter-spacing:1px;}
-.sub-status{font-size:9px;letter-spacing:1px;}
-.sub-status.ok{color:var(--green);}
-.sub-status.no{color:var(--red);}
-.mgmt-row{display:flex;align-items:center;gap:8px;padding:11px 13px;background:var(--grey);border:1px solid var(--grey2);margin-bottom:6px;flex-wrap:wrap;}
-.mgmt-name{flex:1;font-family:var(--fh);font-size:17px;letter-spacing:1px;}
-.rinput{background:var(--grey2);border:1px solid var(--grey3);color:var(--white);font-family:var(--fm);font-size:11px;padding:5px 8px;width:100%;}
-.finput{background:var(--grey2);border:1px solid var(--grey3);color:var(--white);font-family:var(--fm);font-size:12px;padding:8px 11px;width:100%;margin-bottom:8px;}
-.finput::placeholder{color:var(--muted);}
-.finput-sm{width:72px;flex-shrink:0;text-align:center;}
-.addform{background:var(--grey);border:1px solid var(--grey2);padding:14px;margin-bottom:18px;}
-.frow{display:flex;gap:8px;margin-bottom:8px;}
-
-/* REVEAL */
+.rule-card{background:var(--grey);border:1px solid var(--grey2);padding:14px;margin-bottom:8px;font-size:12px;line-height:1.5;}
 .rev-ov{position:fixed;inset:0;z-index:200;background:var(--black);display:none;align-items:center;justify-content:center;flex-direction:column;gap:16px;}
 .rev-ov.on{display:flex;}
 .rev-num{font-family:var(--fh);font-size:120px;color:var(--yellow);line-height:1;}
 .rev-lbl{font-size:11px;letter-spacing:4px;color:var(--muted);}
-
-/* NOTIFY */
 .notif{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--yellow);color:var(--black);font-size:11px;letter-spacing:1px;padding:11px 22px;z-index:300;opacity:0;transition:opacity .25s;white-space:nowrap;font-family:var(--fm);pointer-events:none;}
 .notif.on{opacity:1;}
-
-/* LOADER */
 .loader{position:fixed;inset:0;background:var(--black);z-index:500;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;transition:opacity .4s;}
 .loader.hide{opacity:0;pointer-events:none;}
 .loader-t{font-family:var(--fh);font-size:52px;letter-spacing:4px;color:var(--yellow);}
 .loader-s{font-size:9px;letter-spacing:3px;color:var(--muted);}
 .loader-bar{width:140px;height:2px;background:var(--grey2);overflow:hidden;}
 .loader-bar::after{content:'';display:block;height:100%;background:var(--yellow);animation:prog 1.2s ease-in-out infinite;}
-
-.divider{height:1px;background:var(--grey2);margin:18px 0;}
-.mt8{margin-top:8px;}
-.mt14{margin-top:14px;}
-.flex{display:flex;}
-.gap8{gap:8px;}
-.muted{color:var(--muted);font-size:10px;}
 .empty{text-align:center;padding:36px 20px;color:var(--muted);font-size:10px;letter-spacing:1px;}
-.rep-toggle-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
-.rep-toggle-lbl{font-size:11px;flex:1;}
 </style>
 </head>
 <body>
@@ -221,8 +146,7 @@ body{background:var(--black);color:var(--white);font-family:var(--fm);min-height
     <div class="tb-title">RULES</div>
     <div style="width:50px"></div>
   </div>
-  <div class="inner" id="rv-list">
-    </div>
+  <div class="inner" id="rv-list"></div>
 </div>
 
 <div class="screen" id="player-select">
@@ -277,285 +201,208 @@ body{background:var(--black);color:var(--white);font-family:var(--fm);min-height
 
 <div class="notif" id="notif"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 // ── CONFIG ──
-const BIN_ID = '69fc42e1250b1311c31696e9';
-const API_KEY = '$2a$10$byrXnNFvzQ6icfT76FJGiuioXZkZ8CcFu1ZED6aHi.g5aN4QLrNpq'; // CAN BE ANY LENGTH NOW
-const SYNC_MS = 7000;
-
 const SUPABASE_URL = 'https://gmfdcenfbphxphlhqpmc.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdtZmRjZW5mYnBoeHBobGhxcG1jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkxNzgxMzYsImV4cCI6MjA5NDc1NDEzNn0.I9TDDsKvyuY_zcG4KHItlfQ0afIpPgdzM1XKH9SCbH8';
 const SUPABASE_BUCKET = 'proofs';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-function defState() {
-  return {
-    teams:[
-      {id:0,name:'TEAM 1',pts:0,tagged:false,pass:'',taskCounts:{},taggedAt:null,taggedTotalMs:0,tagPenalties:0},
-      {id:1,name:'TEAM 2',pts:0,tagged:false,pass:'',taskCounts:{},taggedAt:null,taggedTotalMs:0,tagPenalties:0},
-      {id:2,name:'TEAM 3',pts:0,tagged:false,pass:'',taskCounts:{},taggedAt:null,taggedTotalMs:0,tagPenalties:0},
-      {id:3,name:'TEAM 4',pts:0,tagged:false,pass:'',taskCounts:{},taggedAt:null,taggedTotalMs:0,tagPenalties:0},
-      {id:4,name:'TEAM 5',pts:0,tagged:false,pass:'',taskCounts:{},taggedAt:null,taggedTotalMs:0,tagPenalties:0},
-      {id:5,name:'TEAM 6',pts:0,tagged:false,pass:'',taskCounts:{},taggedAt:null,taggedTotalMs:0,tagPenalties:0},
-      {id:6,name:'TEAM 7',pts:0,tagged:false,pass:'',taskCounts:{},taggedAt:null,taggedTotalMs:0,tagPenalties:0},
-    ],
-    tasks:[
-      {id:0,name:'Red Phone Box',desc:'Photo at a red phone box',pts:10,rep:false,req:1},
-      {id:1,name:"Stranger's Selfie",desc:'Selfie with a consenting stranger',pts:15,rep:false,req:1},
-      {id:2,name:'Highest Point',desc:'Video at the highest point you can reach',pts:20,rep:false,req:1},
-      {id:3,name:'Pub Sign',desc:'Photo of any pub sign',pts:10,rep:true,req:1},
-      {id:4,name:'Team Handstand',desc:'Both members attempt a handstand',pts:15,rep:true,req:1},
-      {id:5,name:'Feet in the Sea',desc:'Photo with feet in the sea',pts:10,rep:false,req:1},
-    ],
-    subs:[],
-    logs:[], // NEW: History Log storage
-    rules:[
-      "1. Do not use private transport while tagged.",
-      "2. No hiding inside paid entry venues.",
-      "3. The tagged team cannot score points.",
-    ],
-    settings:{
-  endTime:'16:00',
-  boHrs:2,
-  live:false,
-  revealed:false,
-  tagPenalty:0,
-  instantTagDeduction:0,
-  leastTaggedBonus:50,
-  bonusApplied:false
-},
-    nextSubId:0,
-    nextTaskId:6,
-  };
-}
-
-let S = defState();
+let teams = [];
+let tasks = [];
+let rules = [];
+let settings = {};
 let curTeam = null;
 let curScreen = 'home';
-let syncInt = null;
-let pushing = false;
-let lastPush = 0;
 
-// ── JSONBIN ──
+// ── SUPABASE FETCH ──
 async function pull() {
   try {
-    const r = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`,
-      {headers:{'X-Master-Key':API_KEY}});
-    if(!r.ok) throw new Error();
-    const d = await r.json();
-    if(d.record && d.record.teams && d.record.teams.length > 0) {
-      S = { ...defState(), ...d.record };
-      S.rules = d.record.rules || defState().rules;
-      S.logs = d.record.logs || [];
-    }
-    setSS('ok','SYNCED');
+    const [teamsRes, tasksRes, rulesRes, settingsRes] = await Promise.all([
+      sb.from('teams').select('*').order('id'),
+      sb.from('tasks').select('*').order('id'),
+      sb.from('rules').select('*').order('position'),
+      sb.from('settings').select('*').eq('id', 1).single()
+    ]);
+    teams = teamsRes.data || [];
+    tasks = tasksRes.data || [];
+    rules = (rulesRes.data || []).map(r => r.rule);
+    settings = settingsRes.data || {};
+    setSS('ok', 'SYNCED');
     return true;
   } catch(e) {
-    setSS('err','SYNC ERROR');
+    setSS('err', 'SYNC ERROR');
     return false;
   }
 }
 
-async function push() {
-  if(pushing) return;
-  const now = Date.now();
-  if(now - lastPush < 800) return;
-  pushing = true; lastPush = now;
-  setSS('spin','SAVING...');
-  try {
-    await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`,{
-      method:'PUT',
-      headers:{'Content-Type':'application/json','X-Master-Key':API_KEY},
-      body:JSON.stringify(S)
-    });
-    setSS('ok','SYNCED');
-  } catch(e){ setSS('err','SAVE FAILED'); }
-  pushing = false;
+// ── REALTIME ──
+function startRealtime() {
+  sb.channel('game-changes')
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'teams' }, async () => {
+      const { data } = await sb.from('teams').select('*').order('id');
+      teams = data || [];
+      refresh();
+    })
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'settings' }, async () => {
+      const { data } = await sb.from('settings').select('*').eq('id', 1).single();
+      settings = data || {};
+      refresh();
+      if(settings.revealed) triggerRevealUI();
+    })
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'tasks' }, async () => {
+      const { data } = await sb.from('tasks').select('*').order('id');
+      tasks = data || [];
+      refresh();
+    })
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'rules' }, async () => {
+      const { data } = await sb.from('rules').select('*').order('position');
+      rules = (data || []).map(r => r.rule);
+      refresh();
+    })
+    .subscribe();
 }
 
-async function softPull() {
-  if(pushing) return;
-  try {
-    const r = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`,
-      {headers:{'X-Master-Key':API_KEY}});
-    if(!r.ok) return;
-    const d = await r.json();
-    if(d.record && d.record.teams && d.record.teams.length > 0){ 
-      S = { ...defState(), ...d.record }; 
-      S.rules = d.record.rules || defState().rules;
-      S.logs = d.record.logs || [];
-      refresh(); 
-    }
-  } catch(e){}
-}
-
-function setSS(type,lbl) {
-  const d=document.getElementById('sdot');
-  const l=document.getElementById('slbl');
-  if(d) d.className='sdot '+type;
-  if(l) l.textContent=lbl;
-}
-
-async function forcePush() {
-  pushing=false; lastPush=0;
-  await push();
-  notify('Pushed to server ✓');
-}
-
-// ── LOGGING ──
-function addLog(msg) {
-  const time = new Date().toLocaleTimeString('en-GB', {hour:'2-digit', minute:'2-digit'});
-  S.logs.unshift({ time, msg });
-  if(S.logs.length > 50) S.logs.pop(); // Keep last 50
+function setSS(type, lbl) {
+  const d = document.getElementById('sdot');
+  const l = document.getElementById('slbl');
+  if(d) d.className = 'sdot ' + type;
+  if(l) l.textContent = lbl;
 }
 
 // ── INIT ──
 async function init() {
   await pull();
   document.getElementById('loader').classList.add('hide');
-  setTimeout(()=>{const l=document.getElementById('loader');if(l)l.remove();},500);
+  setTimeout(() => { const l = document.getElementById('loader'); if(l) l.remove(); }, 500);
   startTimer();
-  syncInt = setInterval(() => { if(!pushing && !document.activeElement.matches('input, textarea, select')) softPull(); }, SYNC_MS);
+  startRealtime();
 }
 
 // ── SCREEN ──
 function go(id) {
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  curScreen=id; refresh();
+  curScreen = id; refresh();
 }
 
 function refresh() {
-  if(curScreen==='player-select') renderTeams();
-  if(curScreen==='player-view') renderPV();
-  if(curScreen==='leaderboard') renderLB();
-  if(curScreen==='rules-view') renderRulesView();
+  if(curScreen === 'player-select') renderTeams();
+  if(curScreen === 'player-view') renderPV();
+  if(curScreen === 'leaderboard') renderLB();
+  if(curScreen === 'rules-view') renderRulesView();
 }
 
-// ── TIMER & PENALTIES ──
+// ── TIMER ──
 function timeLeft() {
-  const now=new Date();
-  const[eh,em]=S.settings.endTime.split(':').map(Number);
-  const end=new Date(); end.setHours(eh,em,0,0);
-  const diff=end-now;
-  if(diff<=0) return{total:0,h:0,m:0,s:0,ended:true};
-  return{total:diff,h:Math.floor(diff/3600000),m:Math.floor((diff%3600000)/60000),s:Math.floor((diff%60000)/1000),ended:false};
+  if(!settings.end_time) return { total:0, h:0, m:0, s:0, ended:true };
+  const now = new Date();
+  const [eh, em] = settings.end_time.split(':').map(Number);
+  const end = new Date(); end.setHours(eh, em, 0, 0);
+  const diff = end - now;
+  if(diff <= 0) return { total:0, h:0, m:0, s:0, ended:true };
+  return { total:diff, h:Math.floor(diff/3600000), m:Math.floor((diff%3600000)/60000), s:Math.floor((diff%60000)/1000), ended:false };
 }
 
 function isBlackout() {
-  if(S.settings.revealed) return false;
-  const t=timeLeft();
-  return !t.ended && S.settings.live && t.total<=S.settings.boHrs*3600000;
+  if(settings.revealed) return false;
+  const t = timeLeft();
+  return !t.ended && settings.live && t.total <= (settings.bo_hrs || 2) * 3600000;
 }
 
 function fmtTimer() {
-  const t=timeLeft();
-  if(!S.settings.live) return 'NOT STARTED';
+  const t = timeLeft();
+  if(!settings.live) return 'NOT STARTED';
   if(t.ended) return 'ENDED';
   return `${String(t.h).padStart(2,'0')}:${String(t.m).padStart(2,'0')}:${String(t.s).padStart(2,'0')}`;
 }
 
 function startTimer() {
-  setInterval(()=>{
-    const t=fmtTimer();
-    const tl=timeLeft();
-    const urg=tl.total<3600000&&S.settings.live&&!tl.ended;
-    ['pv-timer','lb-timer','ad-timer'].forEach(id=>{
-      const el=document.getElementById(id);
-      if(el){el.textContent=t;el.className='tb-timer'+(urg?' urg':'');}
+  setInterval(() => {
+    const t = fmtTimer();
+    const tl = timeLeft();
+    const urg = tl.total < 3600000 && settings.live && !tl.ended;
+    ['pv-timer','lb-timer'].forEach(id => {
+      const el = document.getElementById(id);
+      if(el) { el.textContent = t; el.className = 'tb-timer' + (urg ? ' urg' : ''); }
     });
-    if(curScreen==='leaderboard') renderLB();
-
-    // Tag Penalty Check
-    if (S.settings.live && S.settings.tagPenalty > 0) {
-      let penaltyApplied = false;
-      S.teams.forEach(team => {
-        if (team.tagged) {
-          if (!team.taggedAt) team.taggedAt = Date.now();
-          let intervals = Math.floor((Date.now() - team.taggedAt) / (30 * 60000));
-          if (intervals > (team.tagPenalties || 0)) {
-            let diff = intervals - (team.tagPenalties || 0);
-            team.pts = team.pts - (diff * S.settings.tagPenalty);
-            team.tagPenalties = intervals;
-            penaltyApplied = true;
-            addLog(`PENALTY: ${team.name} lost ${diff * S.settings.tagPenalty} pts (30m Tagged)`);
-          }
-        }
-      });
-      if (penaltyApplied && !pushing) push();
-    }
-  },1000);
+    if(curScreen === 'leaderboard') renderLB();
+  }, 1000);
 }
 
-// ── TEAMS ──
-function renderTeams() {
-  const g=document.getElementById('tgrid');
-  if(!g) return;
-  g.innerHTML=(S.teams || []).map(t=>`
-    <div class="tcard ${t.tagged?'tagged':''}" onclick="selTeam(${t.id})">
-      <div class="tcard-name">${t.name}</div>
-      <div class="tcard-pts">${isBlackout() ? '?? PTS' : t.pts+' PTS'} · ${tasksDone(t)} tasks</div>
-    </div>`).join('');
-}
-
+// ── HELPERS ──
 function tasksDone(team) {
-  return S.tasks.filter(task => {
-     let req = task.req || 1;
-     let cnt = (team.taskCounts||{})[task.id] || 0;
-     return cnt >= req;
+  return tasks.filter(task => {
+    const req = task.req || 1;
+    const cnt = (team.task_counts || {})[task.id] || 0;
+    return cnt >= req;
   }).length;
 }
 
 function totalSubmissions(team) {
-  return Object.values(team.taskCounts||{}).reduce((a,b)=>a+b,0);
+  return Object.values(team.task_counts || {}).reduce((a, b) => a + b, 0);
 }
 
-function selTeam(id){ 
-  const team = S.teams[id];
+// ── TEAMS ──
+function renderTeams() {
+  const g = document.getElementById('tgrid');
+  if(!g) return;
+  g.innerHTML = teams.map(t => `
+    <div class="tcard ${t.tagged ? 'tagged' : ''}" onclick="selTeam(${t.id})">
+      <div class="tcard-name">${t.name}</div>
+      <div class="tcard-pts">${isBlackout() ? '?? PTS' : t.pts + ' PTS'} · ${tasksDone(t)} tasks</div>
+    </div>`).join('');
+}
+
+function selTeam(id) {
+  const team = teams.find(t => t.id === id);
+  if(!team) return;
   if(team.pass && team.pass.trim() !== '') {
     const attempt = prompt(`Enter Password for ${team.name}:`);
     if(attempt === null || attempt.trim() !== team.pass) {
-        alert("Incorrect Password or Cancelled");
-        return;
+      alert('Incorrect Password or Cancelled');
+      return;
     }
   }
-  curTeam=id; 
-  go('player-view'); 
+  curTeam = id;
+  go('player-view');
 }
 
 // ── PLAYER VIEW ──
 function renderPV() {
-  if(curTeam===null) return;
-  const team=S.teams[curTeam];
+  if(curTeam === null) return;
+  const team = teams.find(t => t.id === curTeam);
   if(!team) return;
-  document.getElementById('pv-title').textContent=team.name;
+  document.getElementById('pv-title').textContent = team.name;
 
-  const bar=document.getElementById('pv-sbar');
-  const dot=document.getElementById('pv-sdot');
-  const txt=document.getElementById('pv-stxt');
-  document.getElementById('pv-pts').textContent = isBlackout() ? '?? PTS' : team.pts+' PTS';
+  const bar = document.getElementById('pv-sbar');
+  const dot = document.getElementById('pv-sdot');
+  const txt = document.getElementById('pv-stxt');
+  document.getElementById('pv-pts').textContent = isBlackout() ? '?? PTS' : team.pts + ' PTS';
 
-  if(team.tagged){
-    bar.className='sbar tagged'; dot.className='sdot2 tagged';
-    txt.textContent='YOU ARE TAGGED — GO HUNT!';
+  if(team.tagged) {
+    bar.className = 'sbar tagged'; dot.className = 'sdot2 tagged';
+    txt.textContent = 'YOU ARE TAGGED — GO HUNT!';
   } else {
-    bar.className='sbar free'; dot.className='sdot2 free';
-    txt.textContent=S.settings.live?'FREE TO SCORE':'WAITING FOR KICK OFF';
+    bar.className = 'sbar free'; dot.className = 'sdot2 free';
+    txt.textContent = settings.live ? 'FREE TO SCORE' : 'WAITING FOR KICK OFF';
   }
 
-  const tc=document.getElementById('pv-tasks');
-  tc.innerHTML=S.tasks.map(task=>{
-    const cnt=(team.taskCounts||{})[task.id]||0;
-    const req=task.req||1;
-    const done=!task.rep && cnt>=req;
-    const canUpload=S.settings.live && !team.tagged && !done;
-    
+  const tc = document.getElementById('pv-tasks');
+  tc.innerHTML = tasks.map(task => {
+    const cnt = (team.task_counts || {})[task.id] || 0;
+    const req = task.req || 1;
+    const done = !task.rep && cnt >= req;
+    const canUpload = settings.live && !team.tagged && !done;
+
     let chipHtml = '';
-    if (cnt > 0) {
-      if (task.rep) {
-        let completions = Math.floor(cnt/req);
-        chipHtml = `<div class="count-chip">COMPLETED ${completions}× (${cnt} PROOFS) — ${isBlackout() ? '??' : completions*task.pts} PTS</div>`;
+    if(cnt > 0) {
+      if(task.rep) {
+        const completions = Math.floor(cnt / req);
+        chipHtml = `<div class="count-chip">COMPLETED ${completions}× (${cnt} PROOFS) — ${isBlackout() ? '??' : completions * task.pts} PTS</div>`;
       } else {
-        if (cnt >= req) chipHtml = `<div class="done-chip">✓ DONE</div>`;
+        if(cnt >= req) chipHtml = `<div class="done-chip">✓ DONE</div>`;
         else chipHtml = `<div class="count-chip">⏳ ${cnt}/${req} PROOFS UPLOADED</div>`;
       }
     }
@@ -563,229 +410,175 @@ function renderPV() {
     return `
       <div class="task-card">
         <div class="task-top">
-          <div class="task-badge ${task.rep?'rep':''}">${task.pts} PTS${req>1?` (Req ${req})`:''}</div>
+          <div class="task-badge ${task.rep ? 'rep' : ''}">${task.pts} PTS${req > 1 ? ` (Req ${req})` : ''}</div>
           <div class="task-meta">
             <div class="task-title">${task.name}</div>
             <div class="task-desc">${task.desc}</div>
-            ${task.rep?`<div class="task-rep-label">↻ REPEATABLE — EARN EACH TIME</div>`:''}
+            ${task.rep ? `<div class="task-rep-label">↻ REPEATABLE — EARN EACH TIME</div>` : ''}
           </div>
         </div>
         ${chipHtml ? `<div class="task-done-row">${chipHtml}</div>` : ''}
-        ${canUpload?`
+        ${canUpload ? `
           <div class="upload-wrap">
             <label class="upload-btn" id="ulbl-${task.id}">
               <input type="file" accept="image/*,video/*" capture="environment"
                 onchange="submitTask(${team.id},${task.id},this)">
-              📎 ${task.rep&&cnt>=req?'SUBMIT AGAIN':'UPLOAD PROOF'}
+              📎 ${task.rep && cnt >= req ? 'SUBMIT AGAIN' : 'UPLOAD PROOF'}
             </label>
             <div class="upload-progress" id="uprog-${task.id}"></div>
-          </div>`:''}
+          </div>` : ''}
       </div>`;
   }).join('');
 }
 
-// ── RULES VIEW ──
+// ── RULES ──
 function renderRulesView() {
   const el = document.getElementById('rv-list');
   if(!el) return;
-  if(!S.rules || S.rules.length === 0) {
-    el.innerHTML = `<div class="empty">NO RULES SET</div>`;
-    return;
-  }
-  el.innerHTML = S.rules.map(r => `<div class="rule-card">${r}</div>`).join('');
+  if(!rules.length) { el.innerHTML = `<div class="empty">NO RULES SET</div>`; return; }
+  el.innerHTML = rules.map(r => `<div class="rule-card">${r}</div>`).join('');
 }
 
-// ── SUBMIT ──
+// ── UPLOAD & SUBMIT ──
 async function submitTask(teamId, taskId, input) {
-  if(!input.files||!input.files[0]) return;
-  const team=S.teams[teamId];
-  const task=S.tasks.find(t=>t.id===taskId);
-  if(!task) return;
+  if(!input.files || !input.files[0]) return;
+  const team = teams.find(t => t.id === teamId);
+  const task = tasks.find(t => t.id === taskId);
+  if(!task || !team) return;
   const req = task.req || 1;
-  if(!task.rep && (team.taskCounts||{})[taskId] >= req) return;
+  if(!task.rep && (team.task_counts || {})[taskId] >= req) return;
 
-  const file=input.files[0];
-  const prog=document.getElementById('uprog-'+taskId);
-  const lbl=document.getElementById('ulbl-'+taskId);
+  const file = input.files[0];
+  const prog = document.getElementById('uprog-' + taskId);
+  const lbl = document.getElementById('ulbl-' + taskId);
   if(prog) prog.classList.add('show');
-  if(lbl) lbl.style.opacity='0.4';
+  if(lbl) lbl.style.opacity = '0.4';
 
   const fileExt = file.name.split('.').pop();
-const fileName = `team${teamId}_task${taskId}_${Date.now()}.${fileExt}`;
+  const fileName = `team${teamId}_task${taskId}_${Date.now()}.${fileExt}`;
 
-try {
-  const res = await fetch(`${SUPABASE_URL}/storage/v1/object/${SUPABASE_BUCKET}/${fileName}`, {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${SUPABASE_KEY}`,
-      'Content-Type': file.type,
-    },
-    body: file
-  });
+  try {
+    const { error: uploadError } = await sb.storage.from(SUPABASE_BUCKET).upload(fileName, file, { contentType: file.type });
+    if(uploadError) throw uploadError;
 
-  if(res.ok) {
-    const publicUrl = `${SUPABASE_URL}/storage/v1/object/public/${SUPABASE_BUCKET}/${fileName}`;
-    doSubmit(teamId, taskId, task, publicUrl, file.type, file.name);
-  } else {
-    throw new Error('Supabase upload error');
-  }
+    const { data: urlData } = sb.storage.from(SUPABASE_BUCKET).getPublicUrl(fileName);
+    const publicUrl = urlData.publicUrl;
+
+    await doSubmit(teamId, taskId, task, team, publicUrl, file.type, file.name);
   } catch(e) {
     console.error(e);
-    notify('Upload failed — check preset');
+    notify('Upload failed — try again');
   } finally {
     if(prog) prog.classList.remove('show');
-    if(lbl) lbl.style.opacity='1';
-    input.value = ''; 
+    if(lbl) lbl.style.opacity = '1';
+    input.value = '';
   }
 }
 
-function doSubmit(teamId, taskId, task, fileUrl, fileType, fileName) {
-  const team=S.teams[teamId];
+async function doSubmit(teamId, taskId, task, team, fileUrl, fileType, fileName) {
   const req = task.req || 1;
-  
-  if(!team.taskCounts) team.taskCounts={};
-  team.taskCounts[taskId]=(team.taskCounts[taskId]||0)+1;
-  const cnt = team.taskCounts[taskId];
+  const currentCounts = team.task_counts || {};
+  const newCount = (currentCounts[taskId] || 0) + 1;
+  const updatedCounts = { ...currentCounts, [taskId]: newCount };
 
-let pointsToAward = (cnt % req === 0) ? task.pts : 0;
-team.pts = Math.round((team.pts + pointsToAward) * 10) / 10;
+  const pointsToAward = (newCount % req === 0) ? task.pts : 0;
+  const newPts = Math.round((team.pts + pointsToAward) * 10) / 10;
+  const subTime = new Date().toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit' });
 
-  const subTime = new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+  // Update team points and task counts atomically in Supabase
+  const { error: teamError } = await sb.from('teams').update({
+    pts: newPts,
+    task_counts: updatedCounts
+  }).eq('id', teamId);
 
-  S.subs.push({
-    id:S.nextSubId++,
-    teamId, taskId,
-    teamName:team.name,
-    taskName:task.name,
-    pts:task.pts,
-    ptsAwarded:pointsToAward,
-    rep:task.rep,
-    count:cnt,
-    req:req,
-    file:fileUrl,
-    fileType,
-    fileName,
-    time:subTime,
-    status:'approved',
+  if(teamError) { notify('Score update failed — try again'); return; }
+
+  // Write submission to Supabase
+  await sb.from('submissions').insert({
+    team_id: teamId,
+    task_id: taskId,
+    team_name: team.name,
+    task_name: task.name,
+    pts_awarded: pointsToAward,
+    file_url: fileUrl,
+    file_type: fileType,
+    file_name: fileName,
+    time: subTime,
+    count: newCount,
+    req: req,
+    rep: task.rep
   });
 
-  // Write to Supabase for race-condition-proof submission storage
-  fetch(`${SUPABASE_URL}/rest/v1/submissions`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${SUPABASE_KEY}`,
-      'apikey': SUPABASE_KEY,
-      'Prefer': 'return=minimal'
-    },
-    body: JSON.stringify({
-      team_id: teamId,
-      task_id: taskId,
-      team_name: team.name,
-      task_name: task.name,
-      pts_awarded: pointsToAward,
-      file_url: fileUrl,
-      file_type: fileType,
-      file_name: fileName,
-      time: subTime,
-      count: cnt,
-      req: req,
-      rep: task.rep
-    })
-  }).catch(e => console.error('Supabase sub write failed', e));
-
-  if (pointsToAward > 0) {
-    addLog(`SCORE: ${team.name} completed ${task.name} (+${pointsToAward})`);
+  // Log it
+  if(pointsToAward > 0) {
+    await sb.from('logs').insert({ time: subTime, msg: `SCORE: ${team.name} completed ${task.name} (+${pointsToAward})` });
     notify(`✓ ${task.name} — +${pointsToAward} pts!`);
   } else {
-    notify(`✓ Proof ${cnt % req === 0 ? req : cnt % req}/${req} uploaded!`);
+    notify(`✓ Proof ${newCount % req === 0 ? req : newCount % req}/${req} uploaded!`);
   }
-  
-  push();
+
+  // Update local state immediately for responsiveness
+  const teamIdx = teams.findIndex(t => t.id === teamId);
+  if(teamIdx !== -1) {
+    teams[teamIdx].pts = newPts;
+    teams[teamIdx].task_counts = updatedCounts;
+  }
   renderPV();
 }
 
 // ── LEADERBOARD ──
 function renderLB() {
-  const content=document.getElementById('lb-content');
-  const sub=document.getElementById('lb-sub');
+  const content = document.getElementById('lb-content');
+  const sub = document.getElementById('lb-sub');
   if(!content) return;
 
   if(isBlackout()) {
-    sub.textContent='LEADERBOARD LOCKED';
-    content.innerHTML=`
+    sub.textContent = 'LEADERBOARD LOCKED';
+    content.innerHTML = `
       <div class="lb-blackout">
         <div class="lb-lock-icon">🔒</div>
         <div class="lb-lock-title">BLACKED OUT</div>
-        <div class="lb-lock-sub">Hidden for the final ${S.settings.boHrs} hour${S.settings.boHrs>1?'s':''}.<br><br>Check back at the reveal.</div>
+        <div class="lb-lock-sub">Hidden for the final ${settings.bo_hrs || 2} hour${(settings.bo_hrs || 2) > 1 ? 's' : ''}.<br><br>Check back at the reveal.</div>
       </div>`;
     return;
   }
 
-  sub.textContent='ISLE OF WIGHT — 2026';
-  const sorted=[...S.teams].sort((a,b)=>b.pts-a.pts);
-  const pc=['p1','p2','p3'];
-  content.innerHTML=`<div class="lb-list">${sorted.map((t,i)=>`
-    <div class="lb-row ${pc[i]||''}">
-      <div class="lb-pos">${i+1}</div>
+  sub.textContent = 'ISLE OF WIGHT — 2026';
+  const sorted = [...teams].sort((a, b) => b.pts - a.pts);
+  const pc = ['p1','p2','p3'];
+  content.innerHTML = `<div class="lb-list">${sorted.map((t, i) => `
+    <div class="lb-row ${pc[i] || ''}">
+      <div class="lb-pos">${i + 1}</div>
       <div class="lb-info">
         <div class="lb-name">${t.name}</div>
-        <div class="lb-tasks">${totalSubmissions(t)} proof${totalSubmissions(t)!==1?'s':''}</div>
+        <div class="lb-tasks">${totalSubmissions(t)} proof${totalSubmissions(t) !== 1 ? 's' : ''}</div>
       </div>
-      ${t.tagged?'<div class="tagged-pill">TAGGED</div>':''}
+      ${t.tagged ? '<div class="tagged-pill">TAGGED</div>' : ''}
       <div class="lb-score">${t.pts}</div>
     </div>`).join('')}
   </div>`;
 }
 
-// ── NOTIFY ──
-function triggerReveal() {
-  if (!S.settings.bonusApplied) {
-    S.teams.forEach(t => {
-      if (t.tagged) {
-        t.taggedTotalMs = (t.taggedTotalMs || 0) + (Date.now() - (t.taggedAt || Date.now()));
-        t.tagged = false;
-      }
-    });
-    
-    let minTime = Math.min(...S.teams.map(t => t.taggedTotalMs || 0));
-    let bonusAmount = parseInt(S.settings.leastTaggedBonus) || 0;
-    
-    S.teams.forEach(t => {
-      if ((t.taggedTotalMs || 0) === minTime) {
-        t.pts += bonusAmount;
-        addLog(`BONUS: ${t.name} earned Least Tagged Bonus (+${bonusAmount})`);
-      }
-    });
-    S.settings.bonusApplied = true;
-  }
-
-  S.settings.revealed=true;
-  push();
-  
-  const ov=document.getElementById('rev-ov');
+// ── REVEAL ──
+function triggerRevealUI() {
+  const ov = document.getElementById('rev-ov');
+  if(ov.classList.contains('on')) return;
   ov.classList.add('on');
-  let c=3;
-  const ne=document.getElementById('rev-num');
-  const se=document.getElementById('rev-sub');
-  const iv=setInterval(()=>{
+  let c = 3;
+  const ne = document.getElementById('rev-num');
+  const se = document.getElementById('rev-sub');
+  const iv = setInterval(() => {
     c--;
-    if(c<=0){
-      clearInterval(iv);
-      ov.classList.remove('on');
-      go('leaderboard');
-    } else {
-      ne.textContent=c;
-      se.textContent=c===2?'WHO WON?':'HERE WE GO...';
-    }
-  },1000);
+    if(c <= 0) { clearInterval(iv); ov.classList.remove('on'); go('leaderboard'); }
+    else { ne.textContent = c; se.textContent = c === 2 ? 'WHO WON?' : 'HERE WE GO...'; }
+  }, 1000);
 }
 
 // ── NOTIFY ──
 function notify(msg) {
-  const el=document.getElementById('notif');
-  el.textContent=msg; el.classList.add('on');
-  setTimeout(()=>el.classList.remove('on'),2400);
+  const el = document.getElementById('notif');
+  el.textContent = msg; el.classList.add('on');
+  setTimeout(() => el.classList.remove('on'), 2400);
 }
 
 init();
