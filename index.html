@@ -211,7 +211,7 @@ body{background:var(--black);color:var(--white);font-family:var(--fm);min-height
       <div class="sdot" id="sdot"></div>
       <span id="slbl">CONNECTING...</span>
     </div>
-    <div class="iow-tag">ISLE OF WIGHT — MAY 2026</div>
+    <div class="iow-tag">ISLE OF WIGHT — JULY 2026</div>
   </div>
 </div>
 
@@ -651,6 +651,8 @@ function doSubmit(teamId, taskId, task, fileUrl, fileType, fileName) {
 let pointsToAward = (cnt % req === 0) ? task.pts : 0;
 team.pts = Math.round((team.pts + pointsToAward) * 10) / 10;
 
+  const subTime = new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+
   S.subs.push({
     id:S.nextSubId++,
     teamId, taskId,
@@ -664,9 +666,34 @@ team.pts = Math.round((team.pts + pointsToAward) * 10) / 10;
     file:fileUrl,
     fileType,
     fileName,
-    time:new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}),
+    time:subTime,
     status:'approved',
   });
+
+  // Write to Supabase for race-condition-proof submission storage
+  fetch(`${SUPABASE_URL}/rest/v1/submissions`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${SUPABASE_KEY}`,
+      'apikey': SUPABASE_KEY,
+      'Prefer': 'return=minimal'
+    },
+    body: JSON.stringify({
+      team_id: teamId,
+      task_id: taskId,
+      team_name: team.name,
+      task_name: task.name,
+      pts_awarded: pointsToAward,
+      file_url: fileUrl,
+      file_type: fileType,
+      file_name: fileName,
+      time: subTime,
+      count: cnt,
+      req: req,
+      rep: task.rep
+    })
+  }).catch(e => console.error('Supabase sub write failed', e));
 
   if (pointsToAward > 0) {
     addLog(`SCORE: ${team.name} completed ${task.name} (+${pointsToAward})`);
