@@ -211,7 +211,7 @@ body{background:var(--black);color:var(--white);font-family:var(--fm);min-height
       <div class="sdot" id="sdot"></div>
       <span id="slbl">CONNECTING...</span>
     </div>
-    <div class="iow-tag">ISLE OF WIGHT — JULY 2026</div>
+    <div class="iow-tag">ISLE OF WIGHT — MAY 2026</div>
   </div>
 </div>
 
@@ -415,7 +415,6 @@ async function init() {
   setTimeout(()=>{const l=document.getElementById('loader');if(l)l.remove();},500);
   startTimer();
   syncInt = setInterval(() => { if(!pushing && !document.activeElement.matches('input, textarea, select')) softPull(); }, SYNC_MS);
-  populateFilters();
 }
 
 // ── SCREEN ──
