@@ -308,7 +308,7 @@ function timeLeft() {
 function isBlackout() {
   if(settings.revealed) return false;
   const t = timeLeft();
-  return S.settings.live && (t.ended || t.total <= S.settings.boHrs * 3600000);
+  return settings.live && (t.ended || t.total <= (settings.bo_hrs || 2) * 3600000);
 }
 
 function fmtTimer() {
