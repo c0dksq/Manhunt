@@ -225,6 +225,7 @@ async function pull() {
       sb.from('rules').select('*').order('position'),
       sb.from('settings').select('*').eq('id', 1).single()
     ]);
+    if(teamsRes.error) throw teamsRes.error;
     teams = teamsRes.data || [];
     tasks = tasksRes.data || [];
     rules = (rulesRes.data || []).map(r => r.rule);
@@ -232,6 +233,7 @@ async function pull() {
     setSS('ok', 'SYNCED');
     return true;
   } catch(e) {
+    console.error('Pull error:', e);
     setSS('err', 'SYNC ERROR');
     return false;
   }
@@ -273,7 +275,7 @@ function setSS(type, lbl) {
 
 // ── INIT ──
 async function init() {
-  await pull();
+  try { await pull(); } catch(e) { setSS('err', 'SYNC ERROR'); }
   document.getElementById('loader').classList.add('hide');
   setTimeout(() => { const l = document.getElementById('loader'); if(l) l.remove(); }, 500);
   startTimer();
@@ -460,6 +462,8 @@ function checkForNewTasks() {
     if(curScreen === 'player-select') renderTeams();
   }
 }
+// ── RULES ──
+function renderRulesView() {
   const el = document.getElementById('rv-list');
   if(!el) return;
   if(!rules.length) { el.innerHTML = `<div class="empty">NO RULES SET</div>`; return; }
