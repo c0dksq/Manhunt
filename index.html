@@ -328,6 +328,7 @@ function startTimer() {
       if(el) { el.textContent = t; el.className = 'tb-timer' + (urg ? ' urg' : ''); }
     });
     if(curScreen === 'leaderboard') renderLB();
+    checkForNewTasks();
   }, 1000);
 }
 
@@ -390,7 +391,14 @@ function renderPV() {
   }
 
   const tc = document.getElementById('pv-tasks');
-  tc.innerHTML = tasks.map(task => {
+  const visibleTasks = tasks.filter(isTaskUnlocked);
+  const lockedCount = tasks.length - visibleTasks.length;
+
+  tc.innerHTML = (lockedCount > 0 ? `
+    <div style="background:var(--grey);border:1px solid var(--grey2);padding:14px;margin-bottom:8px;text-align:center;">
+      <div style="font-size:10px;color:var(--muted);letter-spacing:2px">🔒 ${lockedCount} TASK${lockedCount > 1 ? 'S' : ''} LOCKED — MORE DROP EACH HOUR</div>
+    </div>` : '') +
+  visibleTasks.map(task => {
     const cnt = (team.task_counts || {})[task.id] || 0;
     const req = task.req || 1;
     const done = !task.rep && cnt >= req;
@@ -431,8 +439,27 @@ function renderPV() {
   }).join('');
 }
 
-// ── RULES ──
-function renderRulesView() {
+// ── TASK UNLOCK ──
+function isTaskUnlocked(task) {
+  if(!task.unlock_at) return true; // No schedule set, show all
+  const now = new Date();
+  const [uh, um] = task.unlock_at.split(':').map(Number);
+  const unlockTime = new Date(); unlockTime.setHours(uh, um, 0, 0);
+  return now >= unlockTime;
+}
+
+let lastUnlockedCount = -1;
+function checkForNewTasks() {
+  const unlockedNow = tasks.filter(isTaskUnlocked).length;
+  if(lastUnlockedCount === -1) { lastUnlockedCount = unlockedNow; return; }
+  if(unlockedNow > lastUnlockedCount) {
+    const diff = unlockedNow - lastUnlockedCount;
+    notify(`🔓 ${diff} NEW TASK${diff > 1 ? 'S' : ''} UNLOCKED!`);
+    lastUnlockedCount = unlockedNow;
+    if(curScreen === 'player-view') renderPV();
+    if(curScreen === 'player-select') renderTeams();
+  }
+}
   const el = document.getElementById('rv-list');
   if(!el) return;
   if(!rules.length) { el.innerHTML = `<div class="empty">NO RULES SET</div>`; return; }
